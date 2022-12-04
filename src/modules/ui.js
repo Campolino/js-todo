@@ -17,6 +17,13 @@ const Main = () => {
       <li><a href="#">Today</a></li>
       <li><a href="#">Upcoming</a></li>
     </ul>
+    <hr>
+    <ul class="projects">
+      <li class="projects-list"><a href="#">Test</a></li>
+    </ul>
+    <ul>
+      <li><input type="text" id="new-project" placeholder="Add new Project"></li>
+    </ul>
   `;
 
   const article = document.createElement('article');

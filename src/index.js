@@ -1,6 +1,7 @@
 import './css/style.css';
 
 import { Header, Main } from './modules/ui';
+import { Events } from './modules/event';
 
 import { Task } from './modules/task';
 import { Project } from './modules/project';
@@ -14,4 +15,5 @@ console.table(project.list);
 document.addEventListener('DOMContentLoaded', () => {
   Header();
   Main();
+  Events();
 })
