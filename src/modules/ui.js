@@ -22,7 +22,7 @@ const Main = () => {
       <li class="projects-list"><a href="#">Test</a></li>
     </ul>
     <ul>
-      <li><input type="text" id="new-project" placeholder="Add new Project"></li>
+      <li><input type="text" id="new-project" placeholder="Add new Project" minlength="3"></li>
     </ul>
   `;
 
