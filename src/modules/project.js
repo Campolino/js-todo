@@ -1,13 +1,13 @@
 export const Project = (name) => {
-  const list = [];
+  const tasks = [];
 
   function addTask(task) {
-    list.push(task);
+    tasks.push(task);
   }
 
   return {
     name,
-    list,
+    tasks,
     addTask
   }
 }
