@@ -33,12 +33,38 @@ const Main = () => {
   document.body.appendChild(main);
 }
 
+const InitialAside = () => {
+  if (localStorage.getItem('project-name')) {
+    const ul = document.querySelector('.projects');
+    ul.textContent = "";
+
+    const projectList = JSON.parse(localStorage.getItem('project-name'));
+
+    projectList.forEach(project => {
+      ul.innerHTML += `
+        <li><a href="#">${project['name']}</a></li>
+      `;
+    })
+  }
+}
+
+const PopulateAside = (project) => {
+  const ul = document.querySelector('.projects');
+
+  ul.innerHTML += `
+  <li><a href="#">${project}</a></li>
+`;
+}
+
 const PopulateArticle = (project) => {
   const article = document.querySelector('article');
 
   article.innerHTML = `
-    <h1>${project['name']}</h1>
+    <div>
+      <h1>${project['name']}</h1>
+      <button id="add-task">Add new Task</button>
+    </div>
   `
 }
 
-export { Header, Main, PopulateArticle };
+export { Header, Main, InitialAside, PopulateArticle, PopulateAside };

@@ -1,5 +1,5 @@
 import { Project } from "./project";
-import { PopulateArticle } from "./ui";
+import { PopulateArticle, PopulateAside } from "./ui";
 
 const Events = () => {
   const projectList = [];
@@ -16,23 +16,12 @@ const Events = () => {
 
           localStorage.setItem('project-name', JSON.stringify(projectList));
 
-          const ul = document.querySelector('.projects');
-          ul.textContent = "";
-
-          projectList.forEach(project => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.setAttribute('href', '#');
-            a.textContent = project['name'];
-
-            li.appendChild(a);
-            ul.appendChild(li);
-          })
-
-          newProject.value = '';
+          PopulateAside(newProject.value);
 
           PopulateArticle(projectList[projectList.length - 1]);
         }
+
+        newProject.value = '';
       }
     })
 

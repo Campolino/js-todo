@@ -62,3 +62,9 @@ article {
   border-radius: 10px;
   background-color: rgb(224, 212, 212);
 }
+
+article > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
