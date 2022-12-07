@@ -33,9 +33,12 @@ const Main = () => {
   document.body.appendChild(main);
 }
 
-const LoadContent = () => {
-  const projectList = document.querySelector('.projects');
-  
+const PopulateArticle = (project) => {
+  const article = document.querySelector('article');
+
+  article.innerHTML = `
+    <h1>${project['name']}</h1>
+  `
 }
 
-export { Header, Main };
+export { Header, Main, PopulateArticle };
