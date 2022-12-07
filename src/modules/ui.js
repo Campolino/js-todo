@@ -19,7 +19,6 @@ const Main = () => {
     </ul>
     <hr>
     <ul class="projects">
-      <li class="projects-list"><a href="#">Test</a></li>
     </ul>
     <ul>
       <li><input type="text" id="new-project" placeholder="Add new Project" minlength="3"></li>
@@ -32,6 +31,11 @@ const Main = () => {
   main.appendChild(article);
 
   document.body.appendChild(main);
+}
+
+const LoadContent = () => {
+  const projectList = document.querySelector('.projects');
+  
 }
 
 export { Header, Main };
