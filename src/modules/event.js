@@ -2,9 +2,11 @@ import { Project } from "./project";
 import { PopulateArticle, PopulateAside } from "./ui";
 
 const Events = () => {
-  const projectList = [];
-
   function addProject() {
+    const projectStorage = JSON.parse(localStorage.getItem('projects'));
+
+    if (projectStorage == null) projectStorage = [];
+
     const newProject = document.querySelector('#new-project');
 
     newProject.addEventListener('keypress', (e) => {
@@ -12,9 +14,8 @@ const Events = () => {
         e.preventDefault();
 
         if (newProject.value != '') {
-          projectList.push(Project(newProject.value));
-
-          localStorage.setItem('project-name', JSON.stringify(projectList));
+          projectStorage.push(Project(newProject.value));
+          localStorage.setItem('projects', JSON.stringify(projectStorage));
 
           PopulateAside(newProject.value);
 
@@ -23,7 +24,7 @@ const Events = () => {
 
         newProject.value = '';
       }
-    })
+    });
 
     return newProject;
   }

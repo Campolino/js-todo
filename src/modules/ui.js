@@ -34,11 +34,11 @@ const Main = () => {
 }
 
 const InitialAside = () => {
-  if (localStorage.getItem('project-name')) {
+  if (localStorage.getItem('projects')) {
     const ul = document.querySelector('.projects');
     ul.textContent = "";
 
-    const projectList = JSON.parse(localStorage.getItem('project-name'));
+    const projectList = JSON.parse(localStorage.getItem('projects'));
 
     projectList.forEach(project => {
       ul.innerHTML += `
