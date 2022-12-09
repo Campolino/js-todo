@@ -42,7 +42,7 @@ const InitialAside = () => {
 
     projectList.forEach(project => {
       ul.innerHTML += `
-        <li><a href="#">${project['name']}</a></li>
+        <li><a href="#" class="project-button">${project['name']}</a></li>
       `;
     })
   }
@@ -52,7 +52,7 @@ const PopulateAside = (project) => {
   const ul = document.querySelector('.projects-list');
 
   ul.innerHTML += `
-  <li><a href="#">${project['name']}</a></li>
+  <li><a href="#" class="project-button">${project['name']}</a></li>
 `;
 }
 

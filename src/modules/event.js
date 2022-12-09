@@ -26,10 +26,24 @@ const Events = () => {
     });
   }
 
+  function openProject() {
+    const projectButton = document.querySelectorAll('.project-button');
+    let projectStorage = JSON.parse(localStorage.getItem('projects'));
+
+    projectButton.forEach(button => {
+      button.addEventListener('click', () => {
+        
+        PopulateArticle(projectStorage.find(project => project['name'] == button.innerHTML))
+      })
+    })
+  }
+
   addProject();
+  openProject();
 
   return {
-    addProject
+    addProject,
+    openProject
   }
 }
 
