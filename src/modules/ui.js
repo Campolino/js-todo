@@ -18,7 +18,7 @@ const Main = () => {
       <li><a href="#">Upcoming</a></li>
     </ul>
     <hr>
-    <ul class="projects">
+    <ul class="projects-list">
     </ul>
     <ul>
       <li><input type="text" id="new-project" placeholder="Add new Project" minlength="3"></li>
@@ -35,7 +35,7 @@ const Main = () => {
 
 const InitialAside = () => {
   if (localStorage.getItem('projects')) {
-    const ul = document.querySelector('.projects');
+    const ul = document.querySelector('.projects-list');
     ul.textContent = "";
 
     const projectList = JSON.parse(localStorage.getItem('projects'));
@@ -49,10 +49,10 @@ const InitialAside = () => {
 }
 
 const PopulateAside = (project) => {
-  const ul = document.querySelector('.projects');
+  const ul = document.querySelector('.projects-list');
 
   ul.innerHTML += `
-  <li><a href="#">${project}</a></li>
+  <li><a href="#">${project['name']}</a></li>
 `;
 }
 

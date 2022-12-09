@@ -1,39 +1,34 @@
 import { Project } from "./project";
 import { PopulateArticle, PopulateAside } from "./ui";
 
-const Events = () => {
-  function addProject() {
-    const projectStorage = JSON.parse(localStorage.getItem('projects'));
+const AddProject = () => {
+  const newProject = document.querySelector('#new-project');
 
-    if (projectStorage == null) projectStorage = [];
+  let projectStorage = JSON.parse(localStorage.getItem('projects'));
+  if (projectStorage == null) projectStorage = [];
 
-    const newProject = document.querySelector('#new-project');
+  newProject.addEventListener('keypress', (e) => {
+    if (e.keyCode === 13 || e.which === 13) {
+      e.preventDefault();
 
-    newProject.addEventListener('keypress', (e) => {
-      if (e.keyCode === 13 || e.which === 13) {
-        e.preventDefault();
+      if (newProject.value != '') {
+        projectStorage.push(Project(newProject.value));
+        localStorage.setItem('projects', JSON.stringify(projectStorage));
 
-        if (newProject.value != '') {
-          projectStorage.push(Project(newProject.value));
-          localStorage.setItem('projects', JSON.stringify(projectStorage));
+        PopulateAside(projectStorage[projectStorage.length - 1]);
 
-          PopulateAside(newProject.value);
-
-          PopulateArticle(projectList[projectList.length - 1]);
-        }
-
-        newProject.value = '';
+        PopulateArticle(projectStorage[projectStorage.length - 1]);
       }
-    });
 
-    return newProject;
-  }
-
-  addProject();
+      newProject.value = '';
+    }
+  });
 
   return {
-    addProject
+    newProject
   }
 }
 
-export { Events };
+export { 
+  AddProject
+}
