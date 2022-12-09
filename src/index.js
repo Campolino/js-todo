@@ -1,13 +1,13 @@
 import './css/style.css';
 
 import { Header, Main, InitialAside } from './modules/ui';
-import { AddProject } from './modules/event';
+import { Events } from './modules/event';
 
 document.addEventListener('DOMContentLoaded', () => {
   Header();
   Main();
   InitialAside();
-  AddProject();
+  Events();
 })
 
 console.log(localStorage)
