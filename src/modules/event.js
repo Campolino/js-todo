@@ -46,9 +46,10 @@ const Events = () => {
     taskButton.addEventListener('click', () => {
       let projectStorage = JSON.parse(localStorage.getItem('projects'));
       const changeProject = projectStorage.find(project => project['name'] == projectTitle.innerHTML)
-      changeProject.addTask(
+      changeProject['tasks'].push(
         Task('Test Task', 'description', 'dueTime', 'priority')
       )
+      projectStorage
       console.log(changeProject)
     })
   }
