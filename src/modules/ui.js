@@ -52,8 +52,8 @@ const PopulateAside = (project) => {
   const ul = document.querySelector('.projects-list');
 
   ul.innerHTML += `
-  <li><a href="#" class="project-button">${project['name']}</a></li>
-`;
+    <li><a href="#" class="project-button">${project['name']}</a></li>
+  `;
 }
 
 const PopulateArticle = (project) => {

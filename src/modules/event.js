@@ -1,4 +1,5 @@
 import { Project } from "./project";
+import { Task } from "./task";
 import { PopulateArticle, PopulateAside } from "./ui";
 
 const Events = () => {
@@ -28,13 +29,27 @@ const Events = () => {
 
   function openProject() {
     const projectButton = document.querySelectorAll('.project-button');
-    let projectStorage = JSON.parse(localStorage.getItem('projects'));
 
     projectButton.forEach(button => {
       button.addEventListener('click', () => {
-        
+        let projectStorage = JSON.parse(localStorage.getItem('projects'));
         PopulateArticle(projectStorage.find(project => project['name'] == button.innerHTML))
+        addTask();
       })
+    })
+  }
+
+  function addTask() {
+    const taskButton = document.querySelector('#add-task');
+    const projectTitle = document.querySelector('h1');
+
+    taskButton.addEventListener('click', () => {
+      let projectStorage = JSON.parse(localStorage.getItem('projects'));
+      const changeProject = projectStorage.find(project => project['name'] == projectTitle.innerHTML)
+      changeProject.addTask(
+        Task('Test Task', 'description', 'dueTime', 'priority')
+      )
+      console.log(changeProject)
     })
   }
 
@@ -43,7 +58,8 @@ const Events = () => {
 
   return {
     addProject,
-    openProject
+    openProject,
+    addTask
   }
 }
 
