@@ -6,16 +6,15 @@ const Events = () => {
   function addProject() {
     const newProject = document.querySelector('#new-project');
 
-    let projectStorage = JSON.parse(localStorage.getItem('projects'));
-    if (projectStorage == null) projectStorage = [];
-
+    const projectStorage = getLocalStorage();
+    
     newProject.addEventListener('keypress', (e) => {
       if (e.keyCode === 13 || e.which === 13) {
         e.preventDefault();
 
         if (newProject.value != '') {
           projectStorage.push(Project(newProject.value));
-          localStorage.setItem('projects', JSON.stringify(projectStorage));
+          setLocalStorage(projectStorage);
 
           PopulateAside(projectStorage[projectStorage.length - 1]);
 
@@ -32,8 +31,8 @@ const Events = () => {
 
     projectButton.forEach(button => {
       button.addEventListener('click', () => {
-        let projectStorage = JSON.parse(localStorage.getItem('projects'));
-        PopulateArticle(projectStorage.find(project => project['name'] == button.innerHTML))
+        const projectStorage = getLocalStorage();
+        PopulateArticle(filterLocalStorage(projectStorage, button.innerHTML))
         addTask();
       })
     })
@@ -44,12 +43,11 @@ const Events = () => {
     const projectTitle = document.querySelector('h1');
 
     taskButton.addEventListener('click', () => {
-      let projectStorage = JSON.parse(localStorage.getItem('projects'));
-      const changeProject = projectStorage.find(project => project['name'] == projectTitle.innerHTML)
+      let projectStorage = getLocalStorage();
+      const changeProject = filterLocalStorage(projectStorage, projectTitle.innerHTML);
       changeProject['tasks'].push(
         Task('Test Task', 'description', 'dueTime', 'priority')
       )
-      projectStorage
       console.log(changeProject)
     })
   }
@@ -66,4 +64,21 @@ const Events = () => {
 
 export { 
   Events
+}
+
+
+// Auxiliary Functions
+
+function getLocalStorage() {
+  let storage = JSON.parse(localStorage.getItem('projects'));
+  if (storage == null) storage = [];
+  return storage;
+}
+
+function setLocalStorage(projects) {
+  localStorage.setItem('projects', JSON.stringify(projects));
+}
+
+function filterLocalStorage(storage, filter) {
+  return storage.find(project => project['name'] == filter)
 }
