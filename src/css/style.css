@@ -69,3 +69,28 @@ article > div {
   justify-content: space-around;
   align-items: center;
 }
+
+article > form {
+  color: rgb(231, 226, 216);
+  background-color: rgb(95, 85, 85);
+  border: 2px solid rgb(54, 51, 51);
+  border-radius: 10px;
+  padding: 5px;
+  max-width: 350px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+article > form > div:not(:last-of-type) {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 5px;
+}
+
+article > form > div:last-of-type {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 5px;
+}

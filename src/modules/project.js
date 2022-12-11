@@ -3,7 +3,6 @@ export const Project = (name) => {
 
   return {
     name,
-    tasks,
-    addTask
+    tasks
   }
 }

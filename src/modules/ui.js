@@ -1,3 +1,5 @@
+import { Task } from "./task";
+
 const Header = () => {
   const header = document.createElement('header');
   header.innerHTML = `
@@ -64,7 +66,7 @@ const PopulateArticle = (project) => {
       <h1>${project['name']}</h1>
       <button id="add-task">Add new Task</button>
     </div>
-  `
+  `;
 }
 
 const TaskForm = () => {
@@ -73,15 +75,15 @@ const TaskForm = () => {
   article.innerHTML += `
     <form>
       <div>
-        <label for="tasktitle">Title: </labe>
+        <label for="tasktitle">Title: </label>
         <input type="text" id="tasktitle" name="tasktitle">
       </div>
       <div>
-        <label for="taskdescription">Description: </labe>
+        <label for="taskdescription">Description: </label>
         <input type="text" id="taskdescription" name="taskdescription">
       </div>
       <div>
-        <label for="taskduetime">When: </labe>
+        <label for="taskduetime">When: </label>
         <input type="date" id="taskduetime" name="taskduetime">
       </div>
       <div>
@@ -93,6 +95,7 @@ const TaskForm = () => {
       </div>
       <div>
         <input type="submit" value="Add new Task">
+        <button id="canceltask">Cancel</button>
       </div>
     </form>
   `

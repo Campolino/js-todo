@@ -32,17 +32,18 @@ const Events = () => {
     projectButton.forEach(button => {
       button.addEventListener('click', () => {
         const projectStorage = getLocalStorage();
-        PopulateArticle(filterLocalStorage(projectStorage, button.innerHTML))
+        PopulateArticle(filterLocalStorage(projectStorage, button.innerHTML));
         addTask();
       })
     })
   }
 
   function addTask() {
-    const taskButton = document.querySelector('#add-task');
-
-    taskButton.addEventListener('click', () => {
-      TaskForm();
+    document.addEventListener('click', (e) => {
+      if (e.target.id == 'add-task') {
+        TaskForm();
+        cancelTask();
+      }
     })
   }
 
@@ -86,4 +87,12 @@ function newTask() {
     Task('Test Task', 'description', 'dueTime', 'priority')
   );
   console.log(changeProject);
+}
+
+function cancelTask() {
+  const cancel = document.querySelector('#canceltask');
+  cancel.addEventListener('click', () => {
+    const form = document.querySelector('form');
+    form.remove();
+  })
 }
