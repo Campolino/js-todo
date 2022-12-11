@@ -1,6 +1,6 @@
 import { Project } from "./project";
 import { Task } from "./task";
-import { PopulateArticle, PopulateAside } from "./ui";
+import { PopulateArticle, PopulateAside, TaskForm } from "./ui";
 
 const Events = () => {
   function addProject() {
@@ -40,15 +40,9 @@ const Events = () => {
 
   function addTask() {
     const taskButton = document.querySelector('#add-task');
-    const projectTitle = document.querySelector('h1');
 
     taskButton.addEventListener('click', () => {
-      let projectStorage = getLocalStorage();
-      const changeProject = filterLocalStorage(projectStorage, projectTitle.innerHTML);
-      changeProject['tasks'].push(
-        Task('Test Task', 'description', 'dueTime', 'priority')
-      )
-      console.log(changeProject)
+      TaskForm();
     })
   }
 
@@ -66,7 +60,6 @@ export {
   Events
 }
 
-
 // Auxiliary Functions
 
 function getLocalStorage() {
@@ -81,4 +74,16 @@ function setLocalStorage(projects) {
 
 function filterLocalStorage(storage, filter) {
   return storage.find(project => project['name'] == filter)
+}
+
+function newTask() {
+  const projectTitle = document.querySelector('h1');
+
+  let projectStorage = getLocalStorage();
+  const changeProject = filterLocalStorage(projectStorage, projectTitle.innerHTML);
+
+  changeProject['tasks'].push(
+    Task('Test Task', 'description', 'dueTime', 'priority')
+  );
+  console.log(changeProject);
 }

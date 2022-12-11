@@ -67,4 +67,35 @@ const PopulateArticle = (project) => {
   `
 }
 
-export { Header, Main, InitialAside, PopulateArticle, PopulateAside };
+const TaskForm = () => {
+  const article = document.querySelector('article');
+  
+  article.innerHTML += `
+    <form>
+      <div>
+        <label for="tasktitle">Title: </labe>
+        <input type="text" id="tasktitle" name="tasktitle">
+      </div>
+      <div>
+        <label for="taskdescription">Description: </labe>
+        <input type="text" id="taskdescription" name="taskdescription">
+      </div>
+      <div>
+        <label for="taskduetime">When: </labe>
+        <input type="date" id="taskduetime" name="taskduetime">
+      </div>
+      <div>
+        <label for="taskpriority">Priority: </label>
+        <select name="taskpriority" id="taskpriority">
+          <option value="normal">Normal</option>
+          <option value="urgent">Urgent</option>
+        </select>
+      </div>
+      <div>
+        <input type="submit" value="Add new Task">
+      </div>
+    </form>
+  `
+}
+
+export { Header, Main, InitialAside, PopulateArticle, PopulateAside, TaskForm };
